@@ -12,7 +12,7 @@ class ContactType extends Model
     protected $fillable = [
 'name'
     ];
-    
+
     public function classificaOContato()
     {
         return $this->hasMany('App\Models\Comment');
