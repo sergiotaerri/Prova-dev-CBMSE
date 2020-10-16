@@ -16,8 +16,9 @@ RUN a2enmod rewrite headers
 #comandos cli todos os arquivos do host manthenham permissoes intactas
 #ou de dentro do container criamos arquivos cujo o dono é o root
 #o UID é 1001
-RUN useradd -G www-data,root  -d /home/serjo serjo
-RUN mkdir -p /home/serjo/.composer && \
-    chown -R serjo:serjo /home/serjo
+# RUN useradd -G www-data,root  -d /home/serjo serjo
+# RUN mkdir -p /home/serjo/.composer && \
+#     chown -R serjo:serjo /home/serjo \
+#     chown -R serjo:serjo /www/var
 
-USER serjo
+USER root
