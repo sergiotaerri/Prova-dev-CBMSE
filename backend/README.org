@@ -8,11 +8,14 @@
 
 **** Rode o docker-compose
      #+BEGIN_SRC sh
-     git clone http://github.com/sergiotaerri/Prova-dev-CBMSE.git docker-compose up -d;
+     docker-compose up -d;
 #+END_SRC
 
 
-**** Acesse a API através da rota http://localhost:8002/public/api/
+**** Acesse a API através da rota
+     =http://localhost:8002/public/api/=
+
+     Sujeito a integração com o servidor web Apache/nginx no futuro.
 
 ** Sobre a API
    A API possui os recursos de =tipos-contatos=, =pessoas= e =contatos=, seguindo o padrão *REST* .
