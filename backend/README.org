@@ -1,0 +1,70 @@
+
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+
+
+** Guia de instalação
+
+**** Clone o repositório
+     #+BEGIN_SRC sh
+     git clone http://github.com/sergiotaerri/Prova-dev-CBMSE.git
+#+END_SRC
+
+
+**** Rode o docker-compose
+     #+BEGIN_SRC sh
+     git clone http://github.com/sergiotaerri/Prova-dev-CBMSE.git docker-compose up -d;
+#+END_SRC
+
+
+**** Acesse a API através da rota http://localhost:8002/public/api/
+
+** Sobre a API
+   A API possui os recursos de =tipos-contatos=, =pessoas= e =contatos=, seguindo o padrão *REST* .
+
+*** Arquitetura geral
+    Atualmente, a arquitetura segue as recomendações padrão do laravel.
+
+      #+BEGIN_SRC sh :results code :exports results
+ #docker permissions can make this not work xd
+        tree app/test/ | head -n -2
+      #+END_SRC
+
+      #+RESULTS:
+      #+begin_src sh
+ app
+ ├── Console
+ │   └── Kernel.php
+ ├── Exceptions
+ │   └── Handler.php
+ ├── Http
+ │   ├── Controllers
+ │   │   ├── ContactTypeController.php
+ │   │   ├── Controller.php
+ │   │   ├── PersonContactController.php
+ │   │   └── PersonController.php
+ │   ├── Kernel.php
+ │   ├── Middleware
+ │   │   ├── Authenticate.php
+ │   │   ├── EncryptCookies.php
+ │   │   ├── PreventRequestsDuringMaintenance.php
+ │   │   ├── RedirectIfAuthenticated.php
+ │   │   ├── TrimStrings.php
+ │   │   ├── TrustHosts.php
+ │   │   ├── TrustProxies.php
+ │   │   └── VerifyCsrfToken.php
+ │   └── Resources
+ │       ├── ContactType.php
+ │       ├── PersonContact.php
+ │       └── Person.php
+ ├── Models
+ │   ├── ContactType.php
+ │   ├── PersonContact.php
+ │   ├── Person.php
+ │   └── User.php
+ └── Providers
+     ├── AppServiceProvider.php
+     ├── AuthServiceProvider.php
+     ├── BroadcastServiceProvider.php
+     ├── EventServiceProvider.php
+     └── RouteServiceProvider.php
+      #+end_src

@@ -1,5 +1,8 @@
 # Prova  de desenvolvedor Junior CBMSE
 
+## README do backend está na pasta backend!
+
+
 Para concorrer a vaga o candidato terá que desenvolver uma aplicação web seguindo as recomendações abaixo.
 ## Sinta-se a vontade para utilizar a tecnologia que desejar. 
 
