@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactType as ContactTypeResource;
+use App\Models\ContactType;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ContactTypeController extends Controller
 {
@@ -13,7 +16,7 @@ class ContactTypeController extends Controller
      */
     public function index()
     {
-        //
+        return ContactTypeResource::collection(ContactType::all());
     }
 
     /**
@@ -24,7 +27,17 @@ class ContactTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:60',
+        ]);
+
+        $contactType = new ContactType($request->all());
+
+        $contactType->save();
+        return response()->json([
+            'tipo-contato' => $contactType,
+            'created' => true
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -35,7 +48,7 @@ class ContactTypeController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ContactTypeResource(ContactType::findOrFail($id));
     }
 
     /**
@@ -47,7 +60,10 @@ class ContactTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contactType = ContactType::findOrFail($id);
+        $contactType->update($request->all());
+
+        return response()->json(['tipo-contato' => $contactType], Response::HTTP_OK);
     }
 
     /**
@@ -58,6 +74,6 @@ class ContactTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ContactType::destroy($id);
     }
 }

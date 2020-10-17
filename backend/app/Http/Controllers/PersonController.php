@@ -29,13 +29,15 @@ class PersonController extends Controller
     {
         $request->validate([
             'first_name' => 'required|max:60',
-            'second_name' => 'requiredmax:255',
+            'second_name' => 'required|max:255',
         ]);
 
         $person = new Person($request->all());
 
         $person->save();
-        return response()->json(['pessoa' => $person], Response::HTTP_OK);
+        return response()->json(['pessoa' => $person,
+            'created' => true
+        ], Response::HTTP_CREATED);
     }
 
     /**

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use App\Http\Resources\PersonContact as PersonContactResource;
+use App\Models\PersonContact;
 
 class PersonContactController extends Controller
 {
@@ -13,7 +16,7 @@ class PersonContactController extends Controller
      */
     public function index()
     {
-        //
+        return PersonContactResource::collection(PersonContact::all());
     }
 
     /**
@@ -24,7 +27,19 @@ class PersonContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'contact' => 'required',
+            'person_id' => 'required',
+            'contact_type_id' => 'required'
+        ]);
+
+        $person = new PersonContact($request->all());
+
+        $person->save();
+        return response()->json([
+            'pessoa' => $person,
+            'created' => true
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -35,7 +50,7 @@ class PersonContactController extends Controller
      */
     public function show($id)
     {
-        //
+        return new PersonContactResource(PersonContact::findOrFail($id));
     }
 
     /**
@@ -47,7 +62,10 @@ class PersonContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $person = PersonContact::findOrFail($id);
+        $person->update($request->all());
+
+        return response()->json(['pessoa' => $person], Response::HTTP_OK);
     }
 
     /**
@@ -58,7 +76,7 @@ class PersonContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PersonContact::destroy($id);
     }
-}
 
+}
