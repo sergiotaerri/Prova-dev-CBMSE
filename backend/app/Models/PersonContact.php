@@ -10,9 +10,9 @@ class PersonContact extends Model
     use HasFactory;
 
     protected $fillable = [
-'contact',
-'person_id',
-'contact_type_id'
+        'contact',
+        'person_id',
+        'contact_type_id'
     ];
 
 }
