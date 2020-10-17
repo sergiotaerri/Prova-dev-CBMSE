@@ -18,7 +18,7 @@
      Sujeito a integração com o servidor web Apache/nginx no futuro.
 
 ** Sobre a API
-   A API possui os recursos de =tipos-contatos=, =pessoas= e =contatos=, seguindo o padrão *REST* .
+   A API possui os recursos de =tipos-contatos=, =pessoas= e =contatos=, seguindo o padrão *REST*, e possuindo implementações de testes para rotas.
 
 *** Arquitetura geral
     Atualmente, a arquitetura segue as recomendações padrão do laravel.
