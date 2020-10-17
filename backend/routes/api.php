@@ -22,11 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('pessoas-contato', [PersonContactController::class,  'index']);
-Route::post('pessoas-contato', [PersonContactController::class,  'store']);
-Route::get('pessoas-contato/{id}', [PersonContactController::class, 'show']);
-Route::put('pessoas-contato/{id}', [PersonContactController::class, 'update']);
-Route::delete('pessoas-contato/{id}', [PersonContactController::class, 'delete']);
+Route::get('contatos', [PersonContactController::class,  'index']);
+Route::post('contatos', [PersonContactController::class,  'store']);
+Route::get('contatos/{id}', [PersonContactController::class, 'show']);
+Route::put('contatos/{id}', [PersonContactController::class, 'update']);
+Route::delete('contatos/{id}', [PersonContactController::class, 'delete']);
 
 Route::get('pessoas', [PersonController::class,  'index']);
 Route::post('pessoas', [PersonController::class,  'store']);
